@@ -6,6 +6,8 @@ import Cookies from 'universal-cookie'
 
 import { ChannelListContainer, ChannelContainer } from './components'
 
+import './App.css'
+
 const apiKey = 'p4jsyfegebat'
 
 const client = StreamChat.getInstance(apiKey)
