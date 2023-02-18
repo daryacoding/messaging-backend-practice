@@ -21,7 +21,7 @@ const SideBar = () => (
     </div>
 )
 
-const ComapnyHeader = () => (
+const CompanyHeader = () => (
     <div className='channel-list__header'>
         <p className='channel-list__header__text'>Medical Pager</p>
     </div>
@@ -32,7 +32,7 @@ function ChannelListContainer() {
         <>
             <SideBar />
             <div className='channel-list__list__wrapper'>
-                <ComapnyHeader />
+                <CompanyHeader />
             </div>
         </>
     )
