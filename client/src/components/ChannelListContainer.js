@@ -27,7 +27,7 @@ const CompanyHeader = () => (
     </div>
 )
 
-function ChannelListContainer({ channel, type }) {
+function ChannelListContainer() {
     return (
         <>
             <SideBar />
@@ -46,6 +46,23 @@ function ChannelListContainer({ channel, type }) {
                     Preview={(previewProps) => (
                         <TeamChannelPreview 
                             {... previewProps}
+                            type='team'
+                        />
+                    )}
+                />
+                <ChannelList 
+                    filters={{}}
+                    channelRenderFilterFn={() => {}}
+                    List={(listProps) =>(
+                        <TeamChannelList
+                        {... listProps}
+                        type='messaging'
+                        />
+                    )}
+                    Preview={(previewProps) => (
+                        <TeamChannelPreview 
+                            {... previewProps}
+                            type='messaging'
                         />
                     )}
                 />
