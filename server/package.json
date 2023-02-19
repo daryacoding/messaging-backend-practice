@@ -1,21 +1,22 @@
 {
-  "name": "backend",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "logger": "^0.0.1",
-    "mongoose": "^6.9.2",
-    "morgan": "^1.10.0",
-    "path": "^0.12.7"
+    "getstream": "^8.1.2",
+    "nodemon": "^2.0.20",
+    "stream-chat": "^8.4.0",
+    "twilio": "^4.7.2"
   }
 }
