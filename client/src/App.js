@@ -8,15 +8,27 @@ import { ChannelListContainer, ChannelContainer, Auth } from './components'
 
 import './App.css'
 
+const cookies = new Cookies()
+
 const apiKey = 'p4jsyfegebat'
+const authToken = cookies.get('token')
 
 const client = StreamChat.getInstance(apiKey)
 
-const authToken = false
+if (authToken) {
+    client.connectUser({
+        id: cookies.get('userId'),
+        fullName: cookies.get('fullName'),
+        name: cookies.get('username'),
+        image: cookies.get('avatarURL'),
+        hashedPassword: cookies.get('hashedPassword'),
+        phoneNumber: cookies.get('phoneNumber'),
+    }, authToken)
+}
 
 function App() {
 
-    if(!authToken) return <Auth />
+    if (!authToken) return <Auth />
 
     return (
         <div className='app__wrapper'>

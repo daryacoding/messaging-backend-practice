@@ -32,7 +32,7 @@ export default function Auth() {
 
         const URL = 'http://localhost:5000/auth'
 
-        const { data: { token, userId, hashedPasword } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+        const { data: { token, userId, hashedPassword } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName, phoneNumber, avatarURL
         })
 
@@ -40,6 +40,14 @@ export default function Auth() {
         cookies.set('username', username)
         cookies.set('fullName', fullName)
         cookies.set('userId', userId)
+
+        if(isSignup) {
+            cookies.set('phoneNumber', phoneNumber)
+            cookies.set('avatarURL', avatarURL)
+            cookies.set('hashedPassword', hashedPassword)
+        }
+
+        window.location.reload()
     }
 
     const switchMode = () => {
@@ -51,7 +59,7 @@ export default function Auth() {
             <div className='auth__form-container_fields'>
                 <div className='auth__form-container_fields-content'>
                     <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
-                    <form onSubmit={() => { }}>
+                    <form onSubmit={{handleSubmit}}>
                         {isSignup && (
                             <div className='auth__form-container_fields-content_input'>
                                 <label htmlFor='fullName'>Full Name</label>
