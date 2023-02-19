@@ -4,10 +4,24 @@ import axios from 'axios'
 
 import signinImage from '../assets/signup.jpg'
 
+const initialState = {
+    fullname: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    phoneNumber: '',
+    avatarURL: ''
+}
+
 export default function Auth() {
+    const [form, setForm] = useState(initialState)
     const [isSignup, setIsSignup] = useState(true)
 
-    const handleChange = () => { }
+    const handleChange = (e) => {
+        setForm({... form, [e.target.name]: e.target.value})
+
+        console.log(form)
+    }
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup)
