@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import signinImage from '../assets/signup.jpg'
 
+const cookies = new Cookies()
+
 const initialState = {
     fullname: '',
     username: '',
@@ -21,6 +23,23 @@ export default function Auth() {
         setForm({... form, [e.target.name]: e.target.value})
 
         console.log(form)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const { fullName, username, password, phoneNumber, avatarURL } = form
+
+        const URL = 'http://localhost:5000/auth'
+
+        const { data: { token, userId, hashedPasword } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, fullName, phoneNumber, avatarURL
+        })
+
+        cookies.set('token', token)
+        cookies.set('username', username)
+        cookies.set('fullName', fullName)
+        cookies.set('userId', userId)
     }
 
     const switchMode = () => {
